@@ -24,3 +24,37 @@ gcloud compute instances create instance-1
 --enable-nested-virtualization
 ```
 
+* Make Directory to upload the files and execute
+
+```
+~ mkdir virtualization1
+~ cd virtualization1
+```
+
+* Upload the file into the VM using SSH
+
+```
+~ mv cmpe2831.c virtualization1
+~ mv Makefile virtualization1/
+```
+
+* Installing the packages requiured
+
+```
+~ sudo apt-get update
+~ sudo apt-get upgrade
+```
+
+* Running the code 
+```
+~ sudo apt-get install vim gcc make linux-headers-$(uname -r)
+
+~ sudo make
+```
+
+* Displaying the command
+```
+~ sudo dmesg
+```
+
+By Running the commands with code from the files you will get result displayed and the files are generated in the folder.
