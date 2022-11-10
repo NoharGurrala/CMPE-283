@@ -32,7 +32,7 @@ gcloud compute instances create instance-1
 ```
 
 * Upload the file into the VM using SSH
-
+./
 ```
 ~ mv cmpe2831.c virtualization1
 ~ mv Makefile virtualization1/
@@ -45,11 +45,16 @@ gcloud compute instances create instance-1
 ~ sudo apt-get upgrade
 ```
 
-* Running the code 
+* Make code ready to run the code 
 ```
 ~ sudo apt-get install vim gcc make linux-headers-$(uname -r)
 
 ~ sudo make
+```
+
+* Running the Code 
+```
+~ sudo insmod ./cmpe2831.ko
 ```
 
 * Displaying the command
