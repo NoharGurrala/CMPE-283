@@ -1,13 +1,9 @@
-/*  
- */
-#include <linux/module.h>	/* Needed by all modules */
-#include <linux/kernel.h>	/* Needed for KERN_INFO */
+#include <linux/module.h>	
+#include <linux/kernel.h>	
 #include <asm/msr.h>
 
 #define MAX_MSG 80
-/*
- * Model specific registers (MSRs) by the module.
-*/
+/* * Model specific registers (MSRs) by the module. */
 #define IA32_VMX_PINBASED_CTLS	0x481
 #define IA32_VMX_PROCBASED_CTLS 0x482
 #define IA32_VMX_PROCBASED_CTLS2 0x48B
@@ -15,18 +11,22 @@
 #define IA32_VMX_ENTRY_CTLS 0x484
 #define IA32_VMX_PROCBASED_CTLS3 0x492
 /*
- * struct caapability_info
+ * struct capability_info
  *
- * Represents a single capability (bit number and description).
+ * Represents a single capability.
  * Used by report_capability to output VMX capabilities.
  */
 struct capability_info {
 	uint8_t bit;
 	const char *name;
 };
+
+
 /*
- * Pinbased capabilities
- */
+
+* Pinbased capabilities  
+
+*/
 struct capability_info pinbased[5] = {
 	{ 0, "External Interrupt Exiting" },
 	{ 3, "NMI Exiting" },
@@ -34,9 +34,11 @@ struct capability_info pinbased[5] = {
 	{ 6, "Activate VMX Preemption Timer" },
 	{ 7, "Process Posted Interrupts" }
 };
+
 /*
  * Primary Processor-based capabilities from SDM Vol-3C, Table 24.6
- */
+*/
+
 struct capability_info procbased_primary[21] = {
     {2, "Interrupt-window exiting" },
     {3, "Use TSC offsetting" },
@@ -60,9 +62,11 @@ struct capability_info procbased_primary[21] = {
     {30, "PAUSE exiting" },
     {31, "Activate secondary controls" }
 };
+
 /*
  * Secondary Processor-based capabilities from SDM Vol-3C, Table 24.7
 */
+
 struct capability_info procbased_secondary[27] = {
     {0, "Virtualize APIC accesses" },
     {1, "Enable EPT" },
@@ -238,9 +242,7 @@ detect_vmx_features(void){
 
 /*
  * init_module
- *
  * Module entry point
- *
  * Return Values:
  *  Always 0
  */
@@ -254,7 +256,6 @@ int init_module(void) {
 }
 /*
  * cleanup_module
- *
  * Function called on module unload
  */
 void cleanup_module(void){
